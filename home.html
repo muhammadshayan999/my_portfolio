@@ -1,9 +1,42 @@
 <section class="home-section">
-<h1>Welcome to My Portfolio</h1><br>
-<p style="cursor:text; font-weight: bold;">Hi, I'm Muhammad Shayan, a Computer Science student passionate about Web Development & Graphic Design.</p><br>
-<button type="button" id="seeworkbutton" class="btn btn-lg mt-3 fs-1.5" onclick="loadPage('projects')">See My Work</button><br>
-<a id="cvbutton" href="resume.pdf" download class="btn btn-lg mt-3 fs-1.5">
- <i class="fas fa-download"></i> Download CV
-</a>
-</section>
 
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- PROFILE IMAGE -->
+      <div class="col-lg-5 text-center
+                  order-1 order-lg-2
+                  mt-4 mt-lg-0 mb-4 mb-lg-0">
+        <div class="profile-ring">
+          <img src="assets/profile.jpg"
+               alt="Muhammad Shayan"
+               class="img-fluid rounded-circle profile-img">
+        </div>
+      </div>
+
+      <!-- TEXT CONTENT -->
+        <div class="col-lg-7 order-2 order-lg-1 text-center text-lg-start">
+            <h1 class="hero-title">
+                Welcome to <span class="accent">My Portfolio</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Hi, I'm <strong>Muhammad Shayan</strong>, a Computer Science student passionate
+                about <strong>Web Development</strong> & <strong>Graphic Design</strong>.
+            </p>
+
+
+            <button type="button" id="seeworkbutton" class="btn btn-lg mt-3 fs-1.5"
+                onclick="loadPage('projects')">See My Work
+            </button>
+
+            <a id="cvbutton" href="resume.pdf" download class="btn btn-lg mt-3 fs-1.5">
+             <i class="fas fa-download"></i> Download CV
+            </a>
+
+        </div>
+
+    </div>
+  </div>
+
+</section>

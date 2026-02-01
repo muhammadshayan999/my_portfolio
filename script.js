@@ -3,6 +3,8 @@ document.getElementById("darkToggle").addEventListener("click", function () {
   document.body.classList.toggle("dark-mode");
 });
 
+
+
 // ================= LOAD SECTIONS DYNAMICALLY =================
 function loadPage(section) {
   fetch(`${section}.html`)
@@ -54,6 +56,38 @@ function initContactForm() {
     });
   }
 }
+
+
+// ================= CUSTOM CURSOR =================
+document.addEventListener("DOMContentLoaded", () => {
+  const cursorDot = document.querySelector(".cursor-dot");
+  const cursorRing = document.querySelector(".cursor-ring");
+
+  if (!cursorDot || !cursorRing) return;
+
+  document.addEventListener("mousemove", (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+
+    cursorDot.style.left = `${x}px`;
+    cursorDot.style.top = `${y}px`;
+
+    cursorRing.style.left = `${x}px`;
+    cursorRing.style.top = `${y}px`;
+  });
+
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest("a, button")) {
+      cursorRing.style.width = "45px";
+      cursorRing.style.height = "45px";
+    } else {
+      cursorRing.style.width = "30px";
+      cursorRing.style.height = "30px";
+    }
+  });
+});
+
+
 
 // ================= DEFAULT LOAD =================
 window.onload = function () {

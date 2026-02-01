@@ -8,20 +8,201 @@
 html {
   scroll-behavior: smooth;
 }
+body, html, *{
+  cursor: none !important;
+}
 /* ---------------- BASE STYLES ---------------- */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f4f4;
   color: #333;
   line-height: 1.6;
   font-size: larger;
-  padding-top: 100px; /* to prevent content being hidden behind fixed header */
+  padding-top: 100px;
+  background: #e0b030;
 }
 
+/* Small center dot */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #f0c040;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+/* Outer ring */
+.cursor-ring {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #f0c040;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
+}
+
+/* Dark mode tweak */
+.dark-mode .cursor-ring {
+  border-color: rgba(240, 192, 64, 0.8);
+}
+
+@media (max-width: 768px) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+
+  body {
+    cursor: auto;
+  }
+}
+
+
+
+.home-section .hero-title,
+.home-section .hero-subtitle,
+.home-section #seeworkbutton,
+.home-section #cvbutton,
+.home-section .profile-ring {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.home-section .hero-subtitle { animation-delay: 0.1s; }
+.home-section #seeworkbutton { animation-delay: 0.2s; }
+.home-section #cvbutton { animation-delay: 0.3s; }
+.home-section .profile-ring { animation-delay: 0.4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* HOME SECTION */
 .home-section {
   padding: 100px 20px;
   text-align: center;
 }
+
+/* Profile image - Home section only */
+.home-section .profile-container {
+  display: flex;
+  justify-content: center;
+}
+
+.home-section .profile-ring {
+  width: 200px;
+  height: 200px;
+  padding: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0c040, #ffd966);
+  margin: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-section .profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #fff;
+}
+
+@media (min-width: 992px) {
+  .home-section .profile-ring {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+/* Dark mode support */
+.dark-mode .home-section .profile-ring {
+  box-shadow: 0 0 30px rgba(240, 192, 64, 0.35);
+}
+
+.dark-mode .home-section .profile-img {
+  background: #121212;
+}
+
+.home-section .profile-ring {
+  transition: transform 0.3s ease;
+}
+
+.home-section .profile-ring:hover {
+  transform: translateY(-6px);
+}
+
+
+
+/* ABOUT SECTION */
+.about-section {
+  padding: 80px 0;
+}
+
+
+
+#about_text_container {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  background-color: #f8f9fa;
+  border: 4px solid #f0c040;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px black;
+}
+.dark-mode #about_text_container {
+  background-color: #1f1f1f;
+  box-shadow: none;
+  color: #f0c040;
+  border: 4px solid black;
+  box-shadow: 0 10px 25px #f0c040;
+}
+
+.about-card {
+  background: #f8f9fa;
+  border: 4px solid #f0c040;
+  border-radius: 16px;
+  padding: 3px;
+  box-shadow: 0 10px 25px black;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-list li {
+  font-size: 1.05rem;
+  padding: 12px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.about-list span {
+  font-weight: 500;
+}
+
+
+.dark-mode .about-card {
+  background: #1f1f1f;
+  box-shadow: none;
+  border: 4px solid black;
+  box-shadow: 0 10px 25px #f0c040;
+}
+
+.dark-mode .about-list span {
+  color: #f0c040;
+}
+
 
 .container {
   width: 100%;
@@ -95,37 +276,51 @@ header nav a {
 
 header nav a:hover {
   color: #f0c040;
-  border-bottom: 3px solid #f0c040;
-  transition: border-bottom 3s ease;
+  border-bottom: 2px solid #f0c040;
+  transition: border-bottom 0.1s ease;
   
 }
 
 #seeworkbutton{
   font-weight: bold;
-  background-color: transparent;
+  background-color: #f0c040;
   border: 2px solid #f0c040;
   border-radius: 4px;
   padding: 6px 12px;
   transition: background-color 0.3s ease;
+
 }
+
+.dark-mode #seeworkbutton{
+
+background-color: transparent;;
+}
+
 #seeworkbutton:hover {
-  background-color: #f0c040;
+  background-color: #e6b832;
+  border-color: #e6b832;
   color: #000;
 }
 
     /* CV BUTTON */
 #cvbutton{
-  background-color: transparent;
+  background-color: #f0c040;
   font-weight: bold;
   border: 2px solid #f0c040;
   border-radius: 4px;
   padding: 6px 12px;
+  margin-left: 20px;
   transition: background-color 0.3s ease;
+}
+.dark-mode #cvbutton{
+
+background-color: transparent;;
 }
 
 #cvbutton:hover {
+  background-color: #e6b832;
+  border-color: #e6b832;
   color: #000;
-  background-color: #f0c040;
 }
 
 
@@ -138,7 +333,6 @@ header nav a:hover {
   color: #f0c040;
   border-radius: 4px;
   padding: 2px 4px;
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -149,6 +343,27 @@ header nav a:hover {
 }
 
 /* ---------------- HERO ---------------- */
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: 1.5rem;
+}
+
+.dark-mode .hero-subtitle {
+  color: #dcdcdc;
+}
+
+
+
 .hero {
   background: #444;
   color: #fff;
@@ -187,6 +402,7 @@ header nav a:hover {
   margin-top: 30px;
 }
 
+
   /*---------------- CARDS - STYLING ---------------*/
 
 .card-container{
@@ -210,6 +426,19 @@ gap: 20px;
   transform: translateY(-5px);
 }
 
+#project-container a{
+  background-color: transparent;
+  font-weight: bold; 
+  border: 2px solid #f0c040;
+  transition: background-color 0.3s ease;
+  
+}
+#project-container a:hover{
+  background-color: #f0c040;
+  color: #000;
+} 
+
+
 /* ---------------- SKILLS ---------------- */
 .skills {
   display: flex;
@@ -225,6 +454,12 @@ gap: 20px;
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: bold;
+}
+#skills-cards .card h5{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#skills-cards .card small{
+ color: #f0c040; 
 }
 
 /* ---------------- CONTACT ---------------- */
@@ -262,11 +497,11 @@ form button {
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 form button:hover {
-  background: #e0b030;
+  background-color: #e0b030;
 }
 
 /* ---------------- FOOTER ---------------- */
@@ -327,6 +562,10 @@ body.dark-mode .btn {
   color: #f0c040;
 }
 
+.dark-mode .skills-section .card small {
+  color: whitesmoke !important;
+}
+
 body.dark-mode footer {
   background: #000;
 }
@@ -347,6 +586,8 @@ body.dark-mode footer {
     align-items: center;
     gap: 0.5rem;
   }
+
+  .about-section h2{margin-left: 50%;}
 
   
   .skills-section h2 {
@@ -412,7 +653,10 @@ header nav ul {
   }
   h1 { font-size: 24px; }
 
-   .skills-section h2 {
+  .about-section h2{margin-left: 50%;}
+
+
+  .skills-section h2 {
   font-size: 24px;
   margin-bottom: 10px;
   margin-left: 0.5rem;
@@ -474,6 +718,8 @@ header nav ul {
     gap: 1.7rem;
   }
 
+  .about-section h2{margin-left: 50%;}
+
    .skills-section h2 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -505,20 +751,30 @@ header nav ul {
     margin-top: 0%;
     margin-right: 7px;
   }
-  header nav ul {
+  
+  #nav-links{
     flex-direction: row;
     align-items: center;
     gap: 1rem;
     margin-left: 370px;
+    padding-bottom: 3px;
   }
+ 
+
   .logo {
-    margin-bottom: -30px;
+    margin-bottom: -50px;
+    font-size: 35px;
+    margin-left: -20px;
   }
+
+  .about-section h2{margin-left: 235px;}
+  
 
    .skills-section h2 {
     font-size: 24px;
     margin-bottom: 10px;
     margin-left: 0.5rem;
+
   }
 
   .skills-section .card {
@@ -536,13 +792,22 @@ header nav ul {
 
 /* Large laptops/desktops: 1024px – 1439px */
 @media (min-width: 1024px) and (max-width: 1439px) {
+  header nav ul{
+    padding-top: 10px;
+  }
+
+  .logo{
+    font-size: 40px;
+    margin-left: -99px;
+  }
   
   h1 { font-size: 36px; }
   .btn { font-size: 17px; padding: 12px 20px; }
  
+.about-section h2{margin-left: 225px;}
+
   #darkToggle {
-    margin-bottom: 0px;
-    margin-top: 38px;
+    margin-bottom: -50px;
   }
   .skills-section .card {
     margin-bottom: 2rem;
@@ -563,6 +828,10 @@ header nav ul {
 
 @media (width: 1440px) {
 
+  .logo{
+    font-size: 40px;
+  }
+
   #darkToggle {
     margin-bottom: 0px;
     margin-top: 38px;
@@ -572,6 +841,9 @@ header nav ul {
   }
   .contact-section p{
     font-size: 45px;
+  }
+  header nav ul{
+    margin-bottom: -45px;
   }
 }
 
