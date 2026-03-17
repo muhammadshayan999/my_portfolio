@@ -462,6 +462,47 @@ gap: 20px;
  color: #f0c040; 
 }
 
+/* ---------------- EXPERIENCE ---------------- */
+.experience-section,
+.certifications-section {
+  padding: 70px 0;
+}
+
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.timeline-item {
+  background: #f8f9fa;
+  border-left: 6px solid #f0c040;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+#certification-cards {
+  align-items: stretch;
+}
+
+.certification-card {
+  text-align: left;
+}
+
+body.dark-mode .timeline-item,
+body.dark-mode .certification-card {
+  background: #1a1a1a;
+  color: #f0c040;
+  border-color: #333;
+}
+
+body.dark-mode .timeline-item {
+  border-left-color: #f0c040;
+}
+
 /* ---------------- CONTACT ---------------- */
 
 form {
